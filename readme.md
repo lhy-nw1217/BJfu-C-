@@ -16,7 +16,7 @@
 
 ### 开发环境 ##
 命令行版  
-VScode with g++
+VScode with gcc
 
 窗口版  
 Visual Studio 2019 C++  
