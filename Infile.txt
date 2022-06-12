@@ -1,0 +1,19 @@
+This book is based upon the book Data Structures and Algorithms in Java by Goodrich and Tamassia, and the related Data Structures and Algorithms in C++ by Goodrich, Tamassia, and Mount. However, this book is not simply a translation of those other books to Python. In adapting the material for this book, we have signi?cantly redesigned the organization and content of the book as follows: The code base has been entirely redesigned to take advantage of the features of Python, such as use of generators for iterating elements of a collection.  Many algorithms that were presented as pseudo-code in the Java and C++ versions are directly presented as complete Python code. Ingeneral, ADT sarede?nedtohave consistent interface withPython¡¯s builtin data types and those in Python¡¯s collections module. Chapter 5 provides an in-depth exploration of the dynamic array-based underpinnings of Python¡¯s built-in list, tuple, andstr classes. New Appendix A serves as an additional reference regarding the functionality of the str class.  Over 450 illustrations have been created or revised. New and revised exercises bring the overall total number to 750.
+
+This book is based upon the book Data Structures and Algorithms in Java by Goodrich and Tamassia, and the related Data Structures and Algorithms in C++ by Goodrich, Tamassia, and Mount.
+
+Contents and Organization The chapters for this book are organized to provide a pedagogical path that starts with the basics of Python programming and object-oriented design. We then add foundational techniques like algorithm analysis and recursion. In the main portion of the book, we present fundamental data structures and algorithms, concluding with a discussion of memory management (that is, the architectural underpinnings of data structures). Speci?cally, the chapters for this book are organized asfollows: 1. Python Primer 2. Object-Oriented Programming 3. Algorithm Analysis 4. Recursion 5. Array-Based Sequences 6. Stacks, Queues, and Deques 7. Linked Lists 8. Trees 9. Priority Queues 10. Maps, Hash Tables, and Skip Lists 11. Search Trees 12. Sorting and Selection 13. Text Processing 14. Graph Algorithms 15. Memory Management and B-Trees A. Character Strings in Python B. Useful Mathematical Facts A more detailed table of contents follows this preface, beginning on page xi.
+
+This book is based upon the book Data Structures and Algorithms in Java by Goodrich and Tamassia, and the related Data Structures and Algorithms in C++ by Goodrich, Tamassia, and Mount.
+
+Many algorithms that were presented as pseudo-code in the Java and C++ versions are directly presented as complete Python code. Ingeneral, ADT sarede?nedtohave consistent interface withPython¡¯s builtin data types and those in Python¡¯s collections module. 
+
+Many algorithms that were presented as pseudo-code in the Java and C++ versions are directly presented as complete Python code. Ingeneral, ADT sarede?nedtohave consistent interface withPython¡¯s builtin data types and those in Python¡¯s collections module. 
+
+Many algorithms that were presented as pseudo-code in the Java and C++ versions are directly presented as complete Python code. Ingeneral, ADT sarede?nedtohave consistent interface withPython¡¯s builtin data types and those in Python¡¯s collections module. 
+
+We delay treatment of object-oriented programming in Python until Chapter 2. This chapter is useful for those new to Python, and for those who may be familiar with Python, yet not with object-oriented programming. Intermsofmathematical background, weassumethereader issomewhatfamiliar with topics from high-school mathematics. Even so, in Chapter 3, we discuss the seven most-important functions for algorithm analysis. In fact, sections that use something other than one of these seven functions are considered optional, and are indicated with a star. We give a summary of other useful mathematical facts, including elementary probability, in Appendix B.
+
+
+
+
