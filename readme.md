@@ -95,7 +95,7 @@ char wordarray[WordMaxLength], //word;此为wordarray的结构，WordMaxLength�
 		A.listsize = 0;
 	}
 ```` 
-或许换智能指针或是把A对S的拷贝改为深拷贝？有待尝试
+或许换智能指针或是把A对S的拷贝改为深拷贝？有待尝试   
 3.答辩容易紧张，对分治算法不熟练。   
 4.低频词过滤仍未完善，只完成了顺序表的低频词过滤   
 
