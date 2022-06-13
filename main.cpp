@@ -16,7 +16,7 @@ using namespace std;
 #define LIST_INIT_SIZE 100
 #define LISTINCREMENT 10
 typedef struct {//单词 
-	char* field;//字段数组指针 
+	char* field;//字段数组指针,存储单词对应字母的ASCII码
 	int num;//字频	次数
 }Word;
 
@@ -110,8 +110,9 @@ void InitBiTree(SqList& S, BiTree& T) {//创建二叉树排序树,创建Word数组
 	delete []Array;
 }
 
-int Hash(int number, char* wordarray) {//哈希函数:哈希值位于0到number ,每个单词对应的哈希值即为它出现的次序
+int Hash(int number, char* wordarray) {//哈希函数:哈希值位于0到number ,number为表长，i为存储单词的次序，wordarray传入的是对应语料的单词,wordarray[i]为对应单词的ASCII码
 	int hashvalue = 0;
+	
 	for (int i = 0; wordarray[i]; i++) {
 		hashvalue += wordarray[i];
 		hashvalue %= number;
@@ -293,10 +294,10 @@ void DestoryBiTree(BiTree& T) {//释放二叉排序树
 
 void ChainInsert(Chain& C, Word& array) {//向链地址法的哈希表中插入元素 
 	int hashvalue = Hash(C.number, array.field);
-	WLink q = &C.elem[hashvalue], p = q->next;
-	while (p) {
+	WLink q = &C.elem[hashvalue], p = q->next;//创建哈希链地址表的表头节点
+	while (p) {//p为q的后继节点
 		q = p;
-		p = p->next;
+		p = p->next;//指向next域
 		ChainASL++;//统计ASL值 
 	}//找到最后一个节点，进而进行下序操作 
 	p = (WNode*)malloc(sizeof(WNode));
@@ -617,7 +618,7 @@ void Insert(BiTree& T, Word e)//用以辅助建立新的去重排序二叉树
 		Insert(T->rchild, e);
 }
 
-int DeleteLowRate(BiTree& T){//实现排序二叉树去重
+int DeleteLowRateBiTree(BiTree& T){//实现排序二叉树去重
 	if (T)
 	{
 		int t = BiTNodeCount(T->lchild) + BiTNodeCount(T->rchild) + 1;//统计单词总数
@@ -631,7 +632,7 @@ int DeleteLowRate(BiTree& T){//实现排序二叉树去重
 
 		
 
-		DeleteLowRate(T->lchild);
+		DeleteLowRateBiTree(T->lchild);
 
 		if (10000 * T->data.num / t > 100)
 		{
@@ -643,7 +644,7 @@ int DeleteLowRate(BiTree& T){//实现排序二叉树去重
 		{
 			//	cout<<"保留:"<<T->data.key<<" "<<10000*(double)T->data.Time/t<<endl;
 		}
-		DeleteLowRate(T->rchild);
+		DeleteLowRateBiTree(T->rchild);
 	}
 	return 0;
 	}
@@ -779,9 +780,14 @@ void DelLowRateSqList(SqList& S ) {//顺序表实现低频词过滤
 	for (int i = 0; i < A.length; i++)fprintf(Outfile, "%s  %d\n", A.elem[i].field, A.elem[i].num);
 	fclose(Outfile);
 	DispFileSuccess(8);
-
-	//DestroySqList(A); //输出结束后释放内存
-
+	//释放内存
+	for (int i = 0; i < A.length; i++) {
+		free(A.elem[i].field);
+		free(A.elem);
+		A.elem = NULL;
+		A.length = 0;
+		A.listsize = 0;
+	}
 }
 
 void  Del(SqList& S, LinkList& L,int tag){
