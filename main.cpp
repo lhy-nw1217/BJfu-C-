@@ -128,7 +128,7 @@ void TableInsert(Table& B, Word& array) {//向哈希表中插入单词
 		B.elem[hashvalue].num = array.num;
 		TableASL++;
 	}
-	else {
+	else {//该位置已存入，使用线性探测方法处理冲突
 		int i;
 		for (i = 1; B.elem[(hashvalue + i) % B.number].field != NULL; i++)TableASL++;//探测地址 
 		B.elem[(hashvalue + i) % B.number].field = (char*)malloc((strlen(array.field) + 1) * sizeof(char));//分配空间 
@@ -317,7 +317,7 @@ void InitChain(SqList& S, Chain& C) {//创建链地址法的哈希表
 }
 
 //快速排序，平均时间复杂度O(N x LogN)
-int Partition(Word*array, int low, int high)//快速排序更换位置 
+int Partition(Word*array, int low, int high)//快速排序更换位置 ,根据单词的ASCII码进行排序
 {
 	Word pivotkey;
 	pivotkey.field = array[low].field; pivotkey.num = array[low].num;
@@ -781,13 +781,17 @@ void DelLowRateSqList(SqList& S ) {//顺序表实现低频词过滤
 	fclose(Outfile);
 	DispFileSuccess(8);
 	//释放内存
-	for (int i = 0; i < A.length; i++) {
-		free(A.elem[i].field);
-		free(A.elem);
-		A.elem = NULL;
-		A.length = 0;
-		A.listsize = 0;
-	}
+		for (int i = 0; i < A.length; i++) {
+			if (A.length != 0) {
+				delete A.elem[i].field;
+				free(A.elem);
+				A.elem = NULL;
+				A.length = 0;
+				A.listsize = 0;
+			}
+		}
+	
+	
 }
 
 void  Del(SqList& S, LinkList& L,int tag){
